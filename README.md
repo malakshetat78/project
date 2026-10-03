@@ -14,18 +14,22 @@ Manage the existing ICVSP requirements through a web interface while keeping **o
 ```text
 UI → POST /api/workbook → read current .xlsx → validate version/action
    → preserve backup → conditionally replace the same .xlsx
-   → reread persisted .xlsx → refreshed UI
+   → reread exact R2 object → verify bytes and requirement fields → refreshed UI
 ```
 
 The single live object is:
 
 `workbook/ICVSP_V-Cycle_Reviewed_Updated.xlsx`
 
-The existing workbook was already migrated into the application's R2 storage during initial setup. The deployed app now reads that live object on every request and does not contain an embedded workbook or initialize from GitHub. An earlier `workbook/current.xlsx` object is migrated if present. If neither object exists, the backend reports that administrator setup is required instead of creating empty or invented requirements. Redeployment never resets the workbook. There is no new workbook per user or session.
+The existing workbook was already migrated into the application's R2 storage during initial setup. The deployed app now reads that live object on every request and does not contain an embedded workbook or initialize from GitHub. The backend only reads the exact live key above; it never selects an alternate key or backup. If that object is missing, the backend reports that administrator setup is required instead of creating empty or invented requirements. Redeployment never resets the workbook. There is no new workbook per user or session.
 
 No original workbook data is committed to this public repository. Tests use synthetic fixtures; the original file can be supplied privately through `ICVSP_TEST_WORKBOOK` for additional local verification.
 
 The UI polls the workbook every 15 seconds and refreshes on browser focus. It keeps the version from when an edit started, so polling cannot silently overwrite another user's change. R2 conditional writes reject concurrent stale saves with HTTP 409 and preserve the draft. Opening another browser returns the same workbook.
+
+Each successful save includes an R2 verification receipt: exact key, previous/new ETag, SHA-256, byte length, object upload time and read time. The backend compares the reread bytes and the affected record before reporting success. Failed writes, conditional-write conflicts, or failed verification preserve the form and show an error. The client requests uncached data; API and verification responses explicitly disable browser/CDN caching.
+
+Add/Restore switches to Requirements and clears previous filters so the saved record is immediately visible. The success notice links to `/workbook-verification?id=<ID>`, a read-only page that independently gets the same R2 object and shows its hash, version and saved fields. The page has no write or export code.
 
 **Export Excel is optional.** It reads the current stored workbook; it is not required to save or synchronize anything. The original ChatGPT attachment is an initialization source, not the live file. This deployment does not connect a desktop Excel window or OneDrive to R2: changes must reach the persistent workbook through the application/backend to appear in the UI.
 
@@ -120,5 +124,7 @@ GitHub is the canonical application source. The same tested files are supplied t
 - XML validity, original styles and untouched supporting package parts.
 - Duplicate/renamed IDs and invalid control characters rejected.
 - Repeated additions extend existing Summary formula ranges.
+- Storage saves overwrite only the canonical live key, independently reread stored bytes, and reject stale, failed, raced or unverified writes.
+- Missing storage never falls back to an older workbook or backup.
 
 `.github/workflows/ci.yml` runs tests, TypeScript checks and a production build for pushes/PRs. Browser acceptance results are documented in `docs/acceptance.md` after live testing. Test-only IDs start with `TEST-`; they are not project requirements.
