@@ -3,7 +3,8 @@
 Manage the existing ICVSP requirements through a web interface while keeping **one persistent Excel workbook as the source of truth**.
 
 - Source: https://github.com/malakshetat78/project
-- Application: https://icvsp-requirements.khaledshetat4.chatgpt.site
+- Deployment target: Cloudflare Workers, deployed directly by GitHub Actions
+- New public URL: pending destination Cloudflare account configuration and migration
 - Frontend: React / Vinext
 - Backend: same-origin `/api/workbook` running in a Cloudflare Worker
 - Persistence: platform-managed Cloudflare R2, server-side binding `BUCKET`
@@ -97,23 +98,38 @@ pnpm dev
 
 See `scripts/execution-profile.mjs` for profile handling. In managed Sites environments the supervised preview sets the managed profile. Local development uses Miniflare's simulated R2 bucket; it is deliberately separate from production. Production workbook data does not become source code.
 
-## Current deployment (Sites)
+## GitHub-connected production deployment
 
-`.openai/hosting.json` identifies the existing application and declares `r2: "BUCKET"`; no D1 database is used. Sites provisions and binds the persistent R2 storage and publishes the Worker and frontend together. Keep the same project ID and binding to retain the existing workbook. Public access is managed through the Site's public access setting.
+The current application and UI are retained. The production target is a single Cloudflare Worker serving both the frontend and same-origin `/api/workbook`, with one persistent R2 workbook. It does not require ChatGPT Sites, Pages, a separate frontend/API origin, or an invented requirements database.
 
-GitHub is the canonical application source. The same tested files are supplied to Sites as the deployment snapshot. The Sites transport repository is generated hosting infrastructure; workbook writes never go to either repository. Source changes in GitHub must be deployed to update the running application; this is distinct from requirement edits, which take effect immediately without deployment.
+The code and deployment workflow are in `malakshetat78/project`. `.github/workflows/deploy-cloudflare.yml` deploys on pushes to `main` and manual dispatch, serializes deployments, runs tests/type checking, builds the Cloudflare target, deploys it, and checks the resulting public URL. Manual dispatch can run disposable live Add/Edit/Delete/Restore checks without Export. The public frontend/backend URLs appear in the Actions run summary after a successful deployment. No URL is claimed until a real deployment succeeds.
 
-## Optional deployment from GitHub to your own Cloudflare account
+Configure these in GitHub repository settings:
 
-`wrangler.jsonc` and `.github/workflows/deploy-cloudflare.yml` deploy the same application to a Cloudflare account you control. They are an alternative deployment configuration, **not the current production environment**, and require account credentials you supply.
+| Setting | Location | Purpose |
+| --- | --- | --- |
+| `CLOUDFLARE_API_TOKEN` | Actions repository secret | Deploy the Worker and access its R2 bucket |
+| `CLOUDFLARE_ACCOUNT_ID` | Actions repository variable | Destination account |
 
-1. Create an R2 bucket named `icvsp-requirements-workbook`. Initialize it once from your existing Excel file (kept outside Git) using `pnpm exec wrangler r2 object put icvsp-requirements-workbook/workbook/ICVSP_V-Cycle_Reviewed_Updated.xlsx --file /secure/path/ICVSP_V-Cycle_Reviewed_Updated.xlsx --remote`. Use this only for an empty bucket; never overwrite an existing edited workbook during setup.
-2. If moving an existing live deployment, migrate its current live object and backups once through your storage administration tools. Do not initialize over edited production data.
-3. Add repository secret `CLOUDFLARE_API_TOKEN` (minimum required Workers/R2 permissions) and repository variable `CLOUDFLARE_ACCOUNT_ID`. Never commit either.
-4. Run the **Deploy to your Cloudflare account (optional)** workflow manually. It tests, builds, and deploys `dist/server/index.js` and `dist/client` using the same `BUCKET` binding.
-5. Keep the bucket/key unchanged for subsequent releases.
+The production runtime uses only `BUCKET`, bound to `icvsp-requirements-workbook`. It needs no frontend token, application API key or database credentials. `APP_PUBLIC_URL` is derived from actual Wrangler output for acceptance checks. `.env.example` contains no real secrets.
 
-`.env.example` documents those optional settings. The current Sites deployment requires no application `.env` secrets. GitHub Pages alone cannot host this Excel-writing backend.
+```bash
+pnpm build:cloudflare
+pnpm deploy:cloudflare
+pnpm verify:public https://ACTUAL_DEPLOYMENT_URL --crud
+```
+
+`build:cloudflare` selects the standalone Worker entrypoint, excludes Sites middleware/build plugins, and verifies exactly one production R2 binding in `dist/server/wrangler.json`. Deploy uses that generated configuration. This fixes the duplicate BUCKET binding produced by the previous optional configuration. Cloudflare compatibility is checked with Wrangler dry-run; CI builds this production target too.
+
+## One-time workbook migration and cutover
+
+The current live workbook is in a platform-managed R2 bucket. A Worker in your own Cloudflare account cannot automatically inherit that bucket's binding. Moving the complete backend out of Sites therefore requires a one-time migration of the **latest live workbook bytes**, preserving the exact object key, all sheets, formatting, relationships, deleted rows and history. Do not initialize from the original attachment: it may be older than the live data.
+
+See [hosting migration](docs/hosting-migration.md). `pnpm migrate:workbook <CURRENT_BACKEND_ORIGIN>` automates the one-time transfer after source writes are paused. It checks source version/hash/structure, refuses to overwrite a different existing destination object, and verifies destination bytes. Temporary local bytes are removed. This is administrator setup only, never a user save workflow or repeated download/replacement.
+
+After cutover, the new Worker alone writes `workbook/ICVSP_V-Cycle_Reviewed_Updated.xlsx`. Keep the old backend read-only to prevent two diverging writable workbooks. Ordinary code deployment never initializes, copies or overwrites requirement data. Workbook backups remain snapshots, not live session copies.
+
+`.openai/hosting.json` is retained only to identify the old deployment during migration. The Cloudflare production build neither packages it nor depends on its project/bucket. The GitHub source is ready, but a destination-account login/configuration is required before the new public deployment and public browser acceptance can be completed.
 
 ## Tests
 

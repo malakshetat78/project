@@ -13,7 +13,11 @@
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate",
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build:cloudflare": "node scripts/build-cloudflare.mjs",
+    "deploy:cloudflare": "node scripts/deploy-cloudflare.mjs",
+    "verify:public": "node scripts/verify-public.mjs",
+    "migrate:workbook": "node scripts/migrate-workbook.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

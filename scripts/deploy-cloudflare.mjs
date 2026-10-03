@@ -1,0 +1,12 @@
+import {spawnSync} from 'node:child_process';
+import fs from 'node:fs';
+if(!process.env.CLOUDFLARE_API_TOKEN||!process.env.CLOUDFLARE_ACCOUNT_ID)throw Error('Cloudflare deployment credentials are not configured. Set repository secret CLOUDFLARE_API_TOKEN and variable CLOUDFLARE_ACCOUNT_ID.');
+const result=spawnSync('pnpm',['exec','wrangler','deploy','--config','dist/server/wrangler.json'],{encoding:'utf8',env:process.env,maxBuffer:10*1024*1024});
+if(result.error)throw result.error;
+process.stdout.write(result.stdout??'');process.stderr.write(result.stderr??'');
+if(result.status)process.exit(result.status);
+const url=result.stdout.match(/https:\/\/[\w.-]+\.workers\.dev\b/)?.[0];
+if(!url)throw Error('Deployment did not return a public workers.dev URL. Inspect the Cloudflare deployment output.');
+if(process.env.GITHUB_OUTPUT)fs.appendFileSync(process.env.GITHUB_OUTPUT,'app_url='+url+'\n');
+fs.writeFileSync('.cloudflare-deployment-url',url+'\n');
+console.log('Public frontend: '+url+'\nBackend: '+url+'/api/workbook');

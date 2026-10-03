@@ -4,6 +4,7 @@
   "main": "dist/server/index.js",
   "compatibility_date": "2026-05-15",
   "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
   "assets": { "directory": "dist/client" },
   "r2_buckets": [{ "binding": "BUCKET", "bucket_name": "icvsp-requirements-workbook" }],
   "observability": { "enabled": true }

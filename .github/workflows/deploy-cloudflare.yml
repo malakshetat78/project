@@ -1,24 +1,54 @@
-name: Deploy to your Cloudflare account (optional)
+name: Deploy production to Cloudflare from GitHub
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
+    inputs:
+      verify_crud:
+        description: Run disposable Add/Edit/Delete/Restore against the new public deployment
+        type: boolean
+        default: true
 permissions:
   contents: read
+concurrency:
+  group: cloudflare-production
+  cancel-in-progress: false
 jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: production
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - name: Require destination account configuration
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN" || { echo 'Set repository secret CLOUDFLARE_API_TOKEN before deploying.'; exit 1; }
+          test -n "$CLOUDFLARE_ACCOUNT_ID" || { echo 'Set repository variable CLOUDFLARE_ACCOUNT_ID before deploying.'; exit 1; }
       - run: corepack enable
       - run: corepack prepare pnpm@11.25.0 --activate
       - run: pnpm install --frozen-lockfile
       - run: pnpm test
       - run: pnpm typecheck
-      - run: pnpm build
-      - run: pnpm exec wrangler deploy --config wrangler.jsonc
+      - run: pnpm build:cloudflare
+      - name: Deploy current frontend and API
+        id: deploy
+        run: pnpm deploy:cloudflare
+      - name: Verify public frontend and persistent workbook
+        run: pnpm verify:public "$APP_PUBLIC_URL"
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          APP_PUBLIC_URL: ${{ steps.deploy.outputs.app_url }}
+      - name: Verify all four live operations
+        if: github.event_name == 'workflow_dispatch' && inputs.verify_crud
+        run: pnpm verify:public "$APP_PUBLIC_URL" --crud
+        env:
+          APP_PUBLIC_URL: ${{ steps.deploy.outputs.app_url }}
+      - name: Report public URLs
+        run: |
+          printf 'Public application: %s\nBackend: %s/api/workbook\n' "$APP_PUBLIC_URL" "$APP_PUBLIC_URL" >> "$GITHUB_STEP_SUMMARY"
+        env:
+          APP_PUBLIC_URL: ${{ steps.deploy.outputs.app_url }}
