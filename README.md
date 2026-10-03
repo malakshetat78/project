@@ -144,3 +144,7 @@ After cutover, the new Worker alone writes `workbook/ICVSP_V-Cycle_Reviewed_Upda
 - Missing storage never falls back to an older workbook or backup.
 
 `.github/workflows/ci.yml` runs tests, TypeScript checks and a production build for pushes/PRs. Browser acceptance results are documented in `docs/acceptance.md` after live testing. Test-only IDs start with `TEST-`; they are not project requirements.
+
+### Permanent deletion
+
+Recycle Bin entries remain indefinitely until a user restores them or explicitly confirms **Delete Permanently** / **Empty Recycle Bin**. Empty Recycle Bin confirms the total count, including entries hidden by filters. Permanent actions use the same API, conditional R2 overwrite and independent readback of `workbook/ICVSP_V-Cycle_Reviewed_Updated.xlsx`; Export is unrelated. A stale confirmation is rejected rather than deleting newly changed entries. Removed entries cannot be restored through the application. Supporting sheet references and historical safety backups are retained; this is not erasure from historical backups. No timed purge is implemented.

@@ -27,14 +27,18 @@ export async function saveStoredWorkbook(bucket:any, action:any) {
   // Independently GET the exact live object and compare its serialized contents.
   const persisted = await readStoredWorkbook(bucket);
   if (persisted.etag !== saved.etag) throw new WorkbookConflict('The workbook changed again while verifying your save. Refresh to inspect the current data.');
-  const collection = action.op === 'delete' ? 'deleted' : 'records';
-  const actualRow = persisted.data[collection].find((r:any)=>r.values.ID===id);
-  const expectedRow = expected[collection].find((r:any)=>r.values.ID===id);
-  if (!actualRow || !expectedRow || JSON.stringify(actualRow.values)!==JSON.stringify(expectedRow.values)
-      || persisted.bytes.length!==updated.length || persisted.bytes.some((b,i)=>b!==updated[i])
+  const purging=action.op==='purge'||action.op==='empty';
+  const ids=action.op==='empty'?action.ids:[id];
+  const collection=action.op==='delete'?'deleted':'records';
+  const actualRow=persisted.data[collection].find((r:any)=>r.values.ID===id);
+  const expectedRow=expected[collection].find((r:any)=>r.values.ID===id);
+  const rowsVerified=purging
+    ? ids.every((target:string)=>![...persisted.data.records,...persisted.data.deleted].some((r:any)=>r.values.ID===target))
+    : actualRow&&expectedRow&&JSON.stringify(actualRow.values)===JSON.stringify(expectedRow.values);
+  if (!rowsVerified || persisted.bytes.length!==updated.length || persisted.bytes.some((b,i)=>b!==updated[i])
       || (action.op==='delete' && persisted.data.records.some((r:any)=>r.values.ID===id))
       || (action.op==='restore' && persisted.data.deleted.some((r:any)=>r.values.ID===id))) {
     throw Error('The R2 workbook could not be verified after writing. Refresh to inspect storage; no successful save has been confirmed.');
   }
-  return {...persisted.data,version:persisted.etag,sync:{mode:'persistent-workbook',automatic:true,storage:persisted.storage},receipt:{operation:action.op,id,verified:true,beforeEtag:before.etag,...persisted.storage}};
+  return {...persisted.data,version:persisted.etag,sync:{mode:'persistent-workbook',automatic:true,storage:persisted.storage},receipt:{operation:action.op,id,ids,count:ids.length,verified:true,beforeEtag:before.etag,...persisted.storage}};
 }

@@ -36,3 +36,27 @@ test('missing live object fails rather than selecting a backup or creating anoth
  const bucket=new TestBucket();bucket.objects.delete(WORKBOOK_KEY);bucket.objects.set('workbook/current.xlsx',syntheticBook());
  await assert.rejects(()=>readStoredWorkbook(bucket),/live workbook is missing/);assert.equal(bucket.writes.length,0);
 });
+
+test('permanent deletion and empty bin persist to the live key, preserve sheets and reject later restoration',async()=>{
+ const bucket=new TestBucket();let current=await readStoredWorkbook(bucket);
+ const original=readBook(current.bytes);const originals=original.records;
+ async function apply(action){const result=await saveStoredWorkbook(bucket,{...action,version:current.etag});current=await readStoredWorkbook(bucket);assert.equal(result.receipt.verified,true);assert.equal(result.receipt.key,WORKBOOK_KEY);assert.equal(bucket.reads.at(-1),WORKBOOK_KEY);return result;}
+ const values={...originals[0].values,ID:'TEST-PERMANENT',Requirement:'Disposable permanent deletion test'};
+ await apply({op:'add',values});await apply({op:'delete',id:values.ID});
+ const deleted=current.data.deleted[0];await apply({op:'restore',id:values.ID});assert.deepEqual(current.data.records.find(r=>r.values.ID===values.ID).values,deleted.values);
+ await apply({op:'delete',id:values.ID});
+ await assert.rejects(()=>apply({op:'purge',id:values.ID}),/confirmation/);
+ const before=readBook(current.bytes);await apply({op:'purge',id:values.ID,confirmed:true});
+ assert.equal(current.data.deleted.length,0);assert.deepEqual(current.data.records,originals);
+ const after=readBook(current.bytes);for(const sheet of before.sheets)assert.deepEqual(after.files[sheet.path],before.files[sheet.path]);
+ await assert.rejects(()=>apply({op:'restore',id:values.ID}),/not found/);
+ await assert.rejects(()=>apply({op:'purge',id:originals[0].values.ID,confirmed:true}),/not found/);
+ for(const id of ['TEST-EMPTY-A','TEST-EMPTY-B']){await apply({op:'add',values:{...values,ID:id}});await apply({op:'delete',id});}
+ await assert.rejects(()=>apply({op:'empty',ids:['TEST-EMPTY-A'],confirmed:true}),/changed/);
+ const snapshot=readBook(current.bytes);const receipt=await apply({op:'empty',ids:['TEST-EMPTY-A','TEST-EMPTY-B'],confirmed:true});
+ assert.equal(receipt.receipt.count,2);assert.equal(current.data.deleted.length,0);assert.deepEqual(current.data.records,originals);
+ const empty=readBook(current.bytes);for(const sheet of snapshot.sheets)assert.deepEqual(empty.files[sheet.path],snapshot.files[sheet.path]);
+ for(const id of ['TEST-EMPTY-A','TEST-EMPTY-B'])await assert.rejects(()=>apply({op:'restore',id}),/not found/);
+ assert.equal(current.data.columns.length,16);assert.equal(current.data.sheets.length,8);
+ assert.ok([...bucket.objects.keys()].some(k=>k.startsWith('workbook/backups/')));
+});
