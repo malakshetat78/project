@@ -1,6 +1,6 @@
 # ICVSP Requirements Management
 
-Manage the existing ICVSP requirements through a web interface while keeping **one persistent Excel workbook as the source of truth**.
+Manage the existing ICVSP requirements through a web interface while keeping **one persistent Excel workbook per requirement set as the source of truth**.
 
 - Source: https://github.com/malakshetat78/project
 - Deployment target: Cloudflare Workers, deployed directly by GitHub Actions

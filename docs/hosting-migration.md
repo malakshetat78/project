@@ -44,3 +44,7 @@ The workflow's public acceptance script performs backend CRUD and fresh persiste
 ## Current blocker
 
 The available browser is signed out of Cloudflare and of GitHub repository-secret settings. The connected GitHub app permits source pushes, but does not provide Cloudflare account authorization or secret-management operations. A new public URL and migration cannot be claimed until the account owner supplies that access securely.
+
+## Two requirement sets
+
+The current application now has separate ICVSP and Security workbooks. Migrate both latest live sources, including their Recycle Bin state: `workbook/ICVSP_V-Cycle_Reviewed_Updated.xlsx` and `workbook/ICVSP_Security_V-Cycle.xlsx`. The migration script freezes/validates both before copying either and verifies both destination objects. The Security source has 10 sheets / 14 fields. Never reinitialize a migrated Security workbook from the original attachment after users have edited it. Verify isolation on the new deployment as well.

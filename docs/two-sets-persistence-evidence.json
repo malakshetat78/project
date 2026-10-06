@@ -1,0 +1,85 @@
+{
+  "testedAt": "2026-10-06T17:14:13.107Z",
+  "liveDeploymentVersion": 7,
+  "automatedTests": 12,
+  "results": [
+    {
+      "operation": "import",
+      "icvsp": "e4a8987f9f9c29f19e75d9e9035c7bb52e6d203d7eb270103557f6c786a5c933",
+      "security": "6e22e19182c9765503a6874a538f59bb4e99436ef070bfe9a6a697f9eddbb6da",
+      "securityCount": 37
+    },
+    {
+      "operation": "security-add",
+      "key": "workbook/ICVSP_Security_V-Cycle.xlsx",
+      "etag": "0c8e2c9bd7f9a6372bfd59c34c34d06d",
+      "sha256": "08bc5bc1655c5330be43634ec17aec8b9f5ef1923d2e9f60fab0ed4b5e0772e2",
+      "otherSha256": "e4a8987f9f9c29f19e75d9e9035c7bb52e6d203d7eb270103557f6c786a5c933"
+    },
+    {
+      "operation": "security-edit",
+      "key": "workbook/ICVSP_Security_V-Cycle.xlsx",
+      "etag": "c07a107db11feff75b5246c0e7a312ce",
+      "sha256": "552f108f9e2d2f1175721db0366fbcd80ebe0487c280fc8334115cd857fb924e",
+      "otherSha256": "e4a8987f9f9c29f19e75d9e9035c7bb52e6d203d7eb270103557f6c786a5c933"
+    },
+    {
+      "operation": "security-delete",
+      "key": "workbook/ICVSP_Security_V-Cycle.xlsx",
+      "etag": "532d70028026646e219fb4d563ce08b9",
+      "sha256": "cffd422f45de446ed802d1b0e8ca127b85f58bb5a4e74588ec0c9f89d59cb358",
+      "otherSha256": "e4a8987f9f9c29f19e75d9e9035c7bb52e6d203d7eb270103557f6c786a5c933"
+    },
+    {
+      "operation": "security-restore",
+      "key": "workbook/ICVSP_Security_V-Cycle.xlsx",
+      "etag": "c29db6fba1ae208592822a4e2f8f313c",
+      "sha256": "4fc7c6481bafb68b8deef95c64ddf0d8350354ce817ce48263fdc66cbe2507bf",
+      "otherSha256": "e4a8987f9f9c29f19e75d9e9035c7bb52e6d203d7eb270103557f6c786a5c933"
+    },
+    {
+      "operation": "icvsp-add",
+      "key": "workbook/ICVSP_V-Cycle_Reviewed_Updated.xlsx",
+      "etag": "bc16af8909a64ffac132e10866b63ea9",
+      "sha256": "463bebda8b4af1687c0788758809ab2674a5797ae6d50b61ce9aabf2f763603f",
+      "otherSha256": "63e2713e582263a8301b53e8bbd13f9ad0602c5d674c88f571680d04313c7a5f"
+    },
+    {
+      "operation": "icvsp-edit",
+      "key": "workbook/ICVSP_V-Cycle_Reviewed_Updated.xlsx",
+      "etag": "8863f157bca3ab411108e5730d94ffca",
+      "sha256": "34459056c760edcc2268ed0f9ac137da088d1966252e69a84b244f9d9fb3205b",
+      "otherSha256": "63e2713e582263a8301b53e8bbd13f9ad0602c5d674c88f571680d04313c7a5f"
+    },
+    {
+      "operation": "icvsp-delete",
+      "key": "workbook/ICVSP_V-Cycle_Reviewed_Updated.xlsx",
+      "etag": "ce0103a345216af5bcce5674e57c55d1",
+      "sha256": "572f1831207bf71382e1d7249939fd1fd854be3c454171a98bd43aae6dd3ff16",
+      "otherSha256": "63e2713e582263a8301b53e8bbd13f9ad0602c5d674c88f571680d04313c7a5f"
+    },
+    {
+      "operation": "icvsp-restore",
+      "key": "workbook/ICVSP_V-Cycle_Reviewed_Updated.xlsx",
+      "etag": "3da79ffbe06cdd6fb85d0bfb574cf201",
+      "sha256": "496a4c346bd6ade288f1af60a8499273cb6049666fe1a62b56aa1b1844995149",
+      "otherSha256": "63e2713e582263a8301b53e8bbd13f9ad0602c5d674c88f571680d04313c7a5f"
+    },
+    {
+      "operation": "icvsp-delete-again",
+      "key": "workbook/ICVSP_V-Cycle_Reviewed_Updated.xlsx",
+      "etag": "2d2038f67133d274789d4f2f74662e69",
+      "sha256": "248100897152517e4f12ebd17b28a0785e4bb0e6c1a36f2393c744a913ad0fac",
+      "otherSha256": "63e2713e582263a8301b53e8bbd13f9ad0602c5d674c88f571680d04313c7a5f"
+    },
+    {
+      "operation": "new-session",
+      "verified": true,
+      "activeICVSP": 37,
+      "activeSecurity": 37,
+      "deletedICVSP": 7,
+      "deletedSecurity": 1
+    }
+  ],
+  "permanentDeletionLiveTests": "Pending action-time confirmation; automated persistence tests passed"
+}

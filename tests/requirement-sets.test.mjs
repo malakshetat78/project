@@ -48,3 +48,13 @@ test('actual supplied security workbook imports unchanged once and preserves 10 
  for(const sheet of before.sheets.filter(s=>!['Requirements','Summary','Traceability'].includes(s.name)))assert.deepEqual(after.files[sheet.path],before.files[sheet.path]);
  assert.equal(after.columns.at(-1).letter,'N');assert.equal(after.columns.some(c=>c.name==='Priority'),false);
 });
+
+test('wrong-source versions are rejected and both sources may own the same ID independently',async()=>{
+ const bucket=new Bucket();const a=await readStoredWorkbook(bucket,'icvsp'),b=await readStoredWorkbook(bucket,'security');
+ const values={...b.data.records[0].values,Requirement:'Security-only edit'};
+ await assert.rejects(()=>saveStoredWorkbook(bucket,{set:'security',op:'edit',id:values.ID,values,version:a.etag}),/changed/);
+ const originalICVSP=new Uint8Array(bucket.objects.get(REQUIREMENT_SETS.icvsp.key));
+ await saveStoredWorkbook(bucket,{set:'security',op:'edit',id:values.ID,values,version:b.etag});
+ assert.deepEqual(bucket.objects.get(REQUIREMENT_SETS.icvsp.key),originalICVSP);
+ assert.equal((await readStoredWorkbook(bucket,'security')).data.records[0].values.Requirement,'Security-only edit');
+});

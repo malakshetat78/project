@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "ICVSP · Requirements",
-  description: "Manage ICVSP requirements directly in the existing Excel workbook.",
+  description: "Manage ICVSP and Security Requirements in their separate persistent Excel workbooks.",
   other: {
     "codex-preview": "development",
   },
