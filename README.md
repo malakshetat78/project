@@ -148,3 +148,19 @@ After cutover, the new Worker alone writes `workbook/ICVSP_V-Cycle_Reviewed_Upda
 ### Permanent deletion
 
 Recycle Bin entries remain indefinitely until a user restores them or explicitly confirms **Delete Permanently** / **Empty Recycle Bin**. Empty Recycle Bin confirms the total count, including entries hidden by filters. Permanent actions use the same API, conditional R2 overwrite and independent readback of `workbook/ICVSP_V-Cycle_Reviewed_Updated.xlsx`; Export is unrelated. A stale confirmation is rejected rather than deleting newly changed entries. Removed entries cannot be restored through the application. Supporting sheet references and historical safety backups are retained; this is not erasure from historical backups. No timed purge is implemented.
+
+### Two independent Excel requirement sets
+
+The selector separates **ICVSP Requirements** (existing 16 fields, 8 sheets) from **Security Requirements** (supplied 14 fields, 10 sheets). It is a UI/source selector, not a new Excel field or requirement Type value. FR/NFR/EXT values remain exactly as recorded.
+
+- ICVSP live object: `workbook/ICVSP_V-Cycle_Reviewed_Updated.xlsx` (unchanged).
+- Security live object: `workbook/ICVSP_Security_V-Cycle.xlsx`.
+- GET `/api/workbook?set=icvsp|security`; POST includes `set` and that workbook's version. Legacy requests without `set` continue to target ICVSP.
+- Forms and filters come from the selected workbook's actual headers. Security uses Scope, Owner, Evidence / notes and Existing V-Cycle link; no Priority/Rationale fields are added to it.
+- Recycle Bin and Empty Recycle Bin are scoped to the selected set. Confirmations identify the set. Dashboard displays active/deleted counts for each. IDs are unique within each source; operations never search the other source for an ID.
+- Every mutation conditionally overwrites only the selected live key and independently reads it back before reporting success. Backups are under `workbook/backups/<set>/`; older ICVSP backups remain untouched. Export is optional.
+- Security import is one-time setup via `/api/security-import`. It accepts only the SHA-256 fingerprint of the provided `ICVSP_Security_V-Cycle(2).xlsx`, saves its original bytes with an object-must-not-exist precondition, and verifies the stored hash. It refuses to replace an existing Security workbook. Payload/data are not committed or included in deployment archives.
+- Security relationships display the existing Traceability, Test cases, Security goals, Threat model and Targets content; Existing V-Cycle link points to the matching ICVSP search. Recorded ranges such as FR-SEC-05..08 are expanded only for membership display, without modifying the source.
+- No automatic purge is added. Permanent deletion removes a selected Recycle Bin entry from the selected live workbook, not historical backups or supporting references.
+
+Run the private supplied-workbook integration check locally with `ICVSP_SECURITY_TEST_WORKBOOK=/secure/path/to/workbook.xlsx pnpm test`. CI uses synthetic content and never contains the private attachment.
