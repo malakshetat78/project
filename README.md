@@ -196,6 +196,12 @@ Existing test cases are shown from the original workbook, including navigation b
 
 ### Unified requirements insights and saved teams
 
-The sidebar has one Requirements Insights entry. Overview provides coverage; Relationships provides readable evidence/review; Graph and Matrix remain optional views inside the same page. Coverage details and recorded test coverage expand on demand.
+The sidebar has one Requirements Insights entry and one readable table: requirement ID, statement, and links/review. Search and set selection are available; each row expands related requirements, evidence, test IDs and missing information. The former separate graph/matrix/overview screens are replaced by this single presentation at the user's request; backend relationship analysis and review decisions remain intact.
 
 Team tasks are resolved from saved memberships in `project/planning.json` and the unchanged workbook Lead. An explicit task team takes precedence; otherwise only a unique matching owner membership yields a team. All 6, TBD, unknown or multi-team owners remain unassigned. This is a derived display association (`teamAssignment`), not an automatic workbook edit. Changing saved membership updates grouping on the next read; the original task metadata and Lead are preserved. Teams, Task Management and Gantt use the same resolver. No teams or accounts are seeded or renamed.
+
+### Assigned task creation and recoverable task deletion
+
+Administrators can open Add Task from Task Management, a team card, or an individual member card. The existing full task form opens with the selected team/member prefilled; assignments still require a real saved team and a valid owner. All writes use the existing timeline API and `workbook/GNATT CHART.xlsx`, independently reread and verified before success.
+
+Delete Task requires confirmation. It is recoverable deletion: a deletion marker and timestamp live in the registered custom XML metadata inside the same workbook, preserving original task rows, IDs, fields, formatting and links. Active planning excludes deleted tasks; Gantt exposes Deleted tasks with Restore Task. Active dependents and children block deletion so their links are not silently altered; restore requires any archived predecessors/parent to be restored first. Archived IDs cannot be reused. No timed purge or permanent task deletion is added. Members retain their existing status/progress-only permissions; create/delete/restore require Admin. No native Excel rows are hidden or removed by task deletion, so an optional exported workbook still contains their original rows plus deletion metadata.
