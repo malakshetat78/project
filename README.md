@@ -193,3 +193,9 @@ Set `ADMIN_EMAILS` as a runtime secret containing the approved administrator acc
 The current Site owner's authenticated account is configured as the initial administrator. Additional administrator emails must be configured explicitly. No email/password user database has been introduced. Public workbook export remains available as before. If migrating to independent hosting, implement a verified identity provider before enabling writes; the application deliberately rejects untrusted Sites identity headers on non-Sites hosts. Existing deployment code remains available, but identity migration is now a required cutover step.
 
 Existing test cases are shown from the original workbook, including navigation back to their covered requirements. Test-case authoring is not provided: the existing source includes test cases and their original schema remains intact. Security analysis uses actual statements and evidence, not a claim that every listed security technology is implemented.
+
+### Unified requirements insights and saved teams
+
+The sidebar has one Requirements Insights entry. Overview provides coverage; Relationships provides readable evidence/review; Graph and Matrix remain optional views inside the same page. Coverage details and recorded test coverage expand on demand.
+
+Team tasks are resolved from saved memberships in `project/planning.json` and the unchanged workbook Lead. An explicit task team takes precedence; otherwise only a unique matching owner membership yields a team. All 6, TBD, unknown or multi-team owners remain unassigned. This is a derived display association (`teamAssignment`), not an automatic workbook edit. Changing saved membership updates grouping on the next read; the original task metadata and Lead are preserved. Teams, Task Management and Gantt use the same resolver. No teams or accounts are seeded or renamed.
