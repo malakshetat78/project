@@ -8,7 +8,7 @@ const normalize=(xml:string)=>{
  if(!match)return xml;
  const prefix=match[1];return xml.replace(new RegExp('(<\\/?)(?:'+prefix+'):','g'),'$1').replace(match[0],xml.includes('xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"')?match[0]:match[0]+' xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"');
 };
-export function readBook(bytes:Uint8Array){
+export function readSheets(bytes:Uint8Array){
  const files=unzipSync(bytes), wb=parser.parse(strFromU8(files['xl/workbook.xml'])).workbook;
  const rels=arr(parser.parse(strFromU8(files['xl/_rels/workbook.xml.rels'])).Relationships.Relationship);
  const text=(x:any):string=>typeof x==='string'?x:x?.['#text']??arr(x?.r).map((r:any)=>text(r.t)).join('');
@@ -19,6 +19,10 @@ export function readBook(bytes:Uint8Array){
   const rows=arr(root.sheetData?.row).map((r:any)=>{const cells:any={};for(const c of arr(r.c)){const letter=c['@r'].replace(/\d/g,'');cells[letter]=c['@t']==='s'?strings[Number(c.v)]:c['@t']==='inlineStr'?text(c.is?.t):String(c.v??'');}return {row:Number(r['@r']),cells}});
   return {name:s['@name'],path,rows,xml};
  });
+ return {files,sheets,wb};
+}
+export function readBook(bytes:Uint8Array){
+ const {files,sheets}=readSheets(bytes);
  const req=sheets.find((s:any)=>s.name==='Requirements');if(!req)throw Error('Workbook must contain its existing Requirements sheet.');
  const header=req.rows.find((r:any)=>r.cells.A==='ID');if(!header)throw Error('The Requirements header could not be found.');
  const columns=Object.entries(header.cells).map(([letter,name])=>({letter,name:String(name)}));
