@@ -23,3 +23,5 @@ export function milestoneLayout(milestones:any[],start:string,end:string,width:n
  const markers=entries.map(n=>{const x=(dayStamp(n.date)-dayStamp(start))/DAY/days*width;const labelWidth=Math.min(190,width-x,Math.max(80,String(n.m['Milestone / Decision']).length*5.3+18));let lane=lanes.findIndex(last=>last+8<=x);if(lane<0)lane=lanes.length;lanes[lane]=x+labelWidth;return {...n,x,width:labelWidth,lane};});
  return {markers,height:Math.max(65,lanes.length*21+23)};
 }
+
+export function taskProgressMismatch(task:any){return task.values?.Status==='Completed'&&task.progress!==null&&task.progress!==undefined&&task.progress!==100;}

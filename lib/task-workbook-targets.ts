@@ -1,6 +1,6 @@
 export const WORKBOOK_TASK_UPDATE = {
-  "revision": "2026-10-14-v4-workbook-reviewed",
-  "source": "ICVSP_Project_Plan_Gantt_and_Jira_v4(1).xlsx",
+  "revision": "2026-10-31-numbers-reviewed",
+  "source": "ICVSP_Project_Plan_Gantt_and_Jira_v4.numbers",
   "tasks": [
     {
       "id": "P1",
@@ -17,7 +17,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-09-29",
       "end": "2026-10-04",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
@@ -35,7 +35,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-09-29",
       "end": "2026-10-04",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
@@ -53,7 +53,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-09-29",
       "end": "2026-10-04",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
@@ -71,7 +71,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-09-29",
       "end": "2026-10-04",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
@@ -89,7 +89,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-09-29",
       "end": "2026-10-04",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
@@ -107,7 +107,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-06",
       "end": "2026-10-11",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
@@ -125,7 +125,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-06",
       "end": "2026-10-11",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
@@ -143,7 +143,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-06",
       "end": "2026-10-11",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
@@ -161,7 +161,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-06",
       "end": "2026-10-11",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
@@ -179,7 +179,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-06",
       "end": "2026-10-11",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
@@ -197,25 +197,25 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-06",
       "end": "2026-10-13",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
       "id": "P10",
       "name": "Weekly mentor review / requirements feedback",
-      "status": "In Progress",
+      "status": "Completed",
       "values": {
         "Workstream": "Planning & Requirements",
         "Task": "Weekly mentor review / requirements feedback",
         "Lead": "All 6",
         "Support (who helps, with what)": "",
-        "Status": "In Progress",
+        "Status": "Completed",
         "Depends on": "",
         "Notes": "Recurring weekly review activity."
       },
       "start": "2026-10-06",
       "end": "2027-06-15",
-      "progress": 5,
+      "progress": 5.0,
       "priority": "High"
     },
     {
@@ -233,25 +233,25 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-06",
       "end": "2026-10-12",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
       "id": "H2",
       "name": "Purchase first prototype hardware set",
-      "status": "In Progress",
+      "status": "Completed",
       "values": {
         "Workstream": "Hardware",
         "Task": "Purchase first prototype hardware set",
         "Lead": "TBD",
         "Support (who helps, with what)": "",
-        "Status": "In Progress",
+        "Status": "Completed",
         "Depends on": "H1",
         "Notes": "Arrival date unknown."
       },
       "start": "2026-10-06",
       "end": "2026-10-20",
-      "progress": 30,
+      "progress": 30.0,
       "priority": "High"
     },
     {
@@ -269,7 +269,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-06",
       "end": "2026-10-20",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
@@ -287,7 +287,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-06",
       "end": "2026-10-11",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
@@ -305,7 +305,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-06",
       "end": "2026-10-09",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
@@ -323,7 +323,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-06",
       "end": "2026-10-18",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
@@ -341,7 +341,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-06",
       "end": "2026-10-08",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
@@ -359,7 +359,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-06",
       "end": "2026-10-11",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
@@ -377,61 +377,61 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-11",
       "end": "2026-10-11",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
       "id": "P9",
       "name": "Consolidate updated requirements baseline",
-      "status": "Planned",
+      "status": "Completed",
       "values": {
         "Workstream": "Planning & Requirements",
         "Task": "Consolidate updated requirements baseline",
         "Lead": "TBD",
         "Support (who helps, with what)": "",
-        "Status": "Planned",
+        "Status": "Completed",
         "Depends on": "P3,P4,P5,P6,P7",
         "Notes": "Resolve rejected/restricted items and baseline the updated document."
       },
       "start": "2026-10-12",
       "end": "2026-10-18",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
       "id": "AI3",
       "name": "Collect / curate Egyptian road dataset",
-      "status": "Planned",
+      "status": "In Progress",
       "values": {
         "Workstream": "AI & Data",
         "Task": "Collect / curate Egyptian road dataset",
-        "Lead": "TBD",
-        "Support (who helps, with what)": "",
-        "Status": "Planned",
+        "Lead": "Shahesta",
+        "Support (who helps, with what)": "Team: labelling and tagging test videos",
+        "Status": "In Progress",
         "Depends on": "P4",
         "Notes": "More own data, especially relevant road-hazard cases."
       },
       "start": "2026-10-12",
       "end": "2026-11-22",
-      "progress": 0,
+      "progress": 25.0,
       "priority": "High"
     },
     {
       "id": "E7",
       "name": "Expand the simulation and core system logic (device → trust engine → warning)",
-      "status": "In Progress",
+      "status": "Completed",
       "values": {
         "Workstream": "Embedded & Trust Engine",
         "Task": "Expand the simulation and core system logic (device → trust engine → warning)",
         "Lead": "Shahesta",
         "Support (who helps, with what)": "Moaz (trust engine)",
-        "Status": "In Progress",
+        "Status": "Completed",
         "Depends on": "E2,E6",
         "Notes": "Mentor MoM action item. Eng. Mahmoud El-Tantawy: continue expanding the simulation, adding core system logic. Progress: device and trust engine now share message format v2 (E8); end-to-end run device → engine → warning still to do. 13 Oct: whole-chain simulation (sil/) running: cars run the real device code, phones upload to the backend, 4 scenarios incl. faults and attacks."
       },
       "start": "2026-10-12",
       "end": "2026-10-18",
-      "progress": 60,
+      "progress": 100.0,
       "priority": "High"
     },
     {
@@ -449,97 +449,97 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-12",
       "end": "2026-10-13",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
       "id": "M5",
       "name": "Define mobile app ↔ device (ECU) messaging protocol (BLE messages)",
-      "status": "In Progress",
+      "status": "Completed",
       "values": {
         "Workstream": "Mobile App",
         "Task": "Define mobile app ↔ device (ECU) messaging protocol (BLE messages)",
         "Lead": "Mariam",
         "Support (who helps, with what)": "",
-        "Status": "In Progress",
+        "Status": "Completed",
         "Depends on": "A1",
         "Notes": "Mentor MoM action item. GATT contract drafted in M7; message format agreed (E8). Still to do: UUIDs, MTU/chunking, acknowledgement."
       },
       "start": "2026-10-12",
       "end": "2026-10-18",
-      "progress": 40,
+      "progress": 40.0,
       "priority": "High"
     },
     {
       "id": "M6",
       "name": "Integrate GPS features into the mobile app",
-      "status": "In Progress",
+      "status": "Completed",
       "values": {
         "Workstream": "Mobile App",
         "Task": "Integrate GPS features into the mobile app",
         "Lead": "Mariam",
         "Support (who helps, with what)": "",
-        "Status": "In Progress",
+        "Status": "Completed",
         "Depends on": "A1",
         "Notes": "Mentor MoM action item. Eng. Mahmoud El-Tantawy: mobile & telematics, GPS integration in the app. Started in M7 (GPS on the phone side of the design)."
       },
       "start": "2026-10-12",
       "end": "2026-10-18",
-      "progress": 20,
+      "progress": 20.0,
       "priority": "High"
     },
     {
       "id": "C6",
       "name": "Cybersecurity tech-stack mapping: language, libraries and tools per security concept; verify ESP32-S3 hardware crypto (AES etc.); choose cloud technology",
-      "status": "In Progress",
+      "status": "Completed",
       "values": {
         "Workstream": "Cybersecurity",
         "Task": "Cybersecurity tech-stack mapping: language, libraries and tools per security concept; verify ESP32-S3 hardware crypto (AES etc.); choose cloud technology",
-        "Lead": "Moaz",
+        "Lead": "Ahmed",
         "Support (who helps, with what)": "Ahmed, Malak (cloud technology choice)",
-        "Status": "In Progress",
+        "Status": "Completed",
         "Depends on": "P7,C1",
         "Notes": "Mentor MoM action item. Eng. Mahmoud Ali: for each security concept say how it is implemented (e.g. C), with which library/tool, and whether the controller supports it in hardware (AES, SHA, secure boot, flash encryption). Also decide the cloud technology."
       },
       "start": "2026-10-12",
       "end": "2026-10-18",
-      "progress": 10,
+      "progress": 10.0,
       "priority": "High"
     },
     {
       "id": "T7",
       "name": "Trial-and-error tests across the stack options under failure conditions (stress-test components early)",
-      "status": "In Progress",
+      "status": "Completed",
       "values": {
         "Workstream": "Integration & Verification",
         "Task": "Trial-and-error tests across the stack options under failure conditions (stress-test components early)",
-        "Lead": "TBD",
-        "Support (who helps, with what)": "",
-        "Status": "In Progress",
+        "Lead": "Shahesta",
+        "Support (who helps, with what)": "Database option (Supabase/PostgreSQL) still to test",
+        "Status": "Completed",
         "Depends on": "E7",
         "Notes": "Mentor MoM action item. Both mentors: hands-on trial-and-error testing across languages/components to catch failures early and check stability under failure (e.g. lost messages, BLE disconnect, no GPS, cloud offline). 13 Oct: fault and attack scenarios in the simulation (BLE loss, outage, GPS loss, Sybil, replay, tampering, revoked device)."
       },
       "start": "2026-10-12",
       "end": "2026-10-18",
-      "progress": 40,
+      "progress": 80.0,
       "priority": "High"
     },
     {
       "id": "D7",
       "name": "Requirements HTML dashboard: simpler links so requirements, SRS items and test cases are easy to trace, search and navigate",
-      "status": "In Progress",
+      "status": "Completed",
       "values": {
         "Workstream": "Documentation",
         "Task": "Requirements HTML dashboard: simpler links so requirements, SRS items and test cases are easy to trace, search and navigate",
-        "Lead": "TBD",
+        "Lead": "Malak",
         "Support (who helps, with what)": "",
-        "Status": "In Progress",
+        "Status": "Completed",
         "Depends on": "P9",
         "Notes": "Mentor MoM action item. Eng. Mahmoud Ali: structure the view so each requirement links to its SRS item and test cases."
       },
       "start": "2026-10-12",
       "end": "2026-10-18",
-      "progress": 10,
+      "progress": 10.0,
       "priority": "High"
     },
     {
@@ -549,7 +549,7 @@ export const WORKBOOK_TASK_UPDATE = {
       "values": {
         "Workstream": "Documentation",
         "Task": "Maintain requirements / traceability / test evidence",
-        "Lead": "TBD",
+        "Lead": "All 6",
         "Support (who helps, with what)": "",
         "Status": "Planned",
         "Depends on": "P9",
@@ -557,7 +557,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-12",
       "end": "2027-06-15",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "Medium"
     },
     {
@@ -567,7 +567,7 @@ export const WORKBOOK_TASK_UPDATE = {
       "values": {
         "Workstream": "Hardware",
         "Task": "Procurement follow-up / delivery buffer",
-        "Lead": "TBD",
+        "Lead": "Malak",
         "Support (who helps, with what)": "",
         "Status": "Waiting for hardware",
         "Depends on": "H2",
@@ -575,7 +575,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-13",
       "end": "2026-11-15",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
@@ -593,43 +593,43 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-13",
       "end": "2026-10-13",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
       "id": "B1",
       "name": "Backend project skeleton + core API",
-      "status": "In Progress",
+      "status": "Completed",
       "values": {
         "Workstream": "Backend & Cloud",
         "Task": "Backend project skeleton + core API",
         "Lead": "Shahesta",
         "Support (who helps, with what)": "Moaz",
-        "Status": "In Progress",
+        "Status": "Completed",
         "Depends on": "A2",
         "Notes": "Started early. FastAPI prototype: device registry, POST /reports, POST /beacons, GET /hazards; SQLite now, Supabase later. 18 API tests."
       },
       "start": "2026-10-13",
       "end": "2026-11-22",
-      "progress": 60,
+      "progress": 100.0,
       "priority": "High"
     },
     {
       "id": "B3",
       "name": "Hazard report API + validation + replay checks",
-      "status": "In Progress",
+      "status": "Completed",
       "values": {
         "Workstream": "Backend & Cloud",
         "Task": "Hazard report API + validation + replay checks",
         "Lead": "Shahesta",
         "Support (who helps, with what)": "Moaz",
-        "Status": "In Progress",
+        "Status": "Completed",
         "Depends on": "B1,B2",
         "Notes": "Signature with registered key, revoked/unknown devices, schema v2, replay and boot/sequence checks, idempotent retries, rejection log. Tested."
       },
       "start": "2026-10-13",
       "end": "2026-12-20",
-      "progress": 60,
+      "progress": 100.0,
       "priority": "High"
     },
     {
@@ -647,7 +647,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-13",
       "end": "2026-10-13",
-      "progress": 100,
+      "progress": 100.0,
       "priority": "High"
     },
     {
@@ -657,7 +657,7 @@ export const WORKBOOK_TASK_UPDATE = {
       "values": {
         "Workstream": "Integration & Verification",
         "Task": "Unit/integration/regression test automation",
-        "Lead": "TBD",
+        "Lead": "All 6",
         "Support (who helps, with what)": "",
         "Status": "In Progress",
         "Depends on": "C2",
@@ -665,7 +665,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-13",
       "end": "2027-02-14",
-      "progress": 30,
+      "progress": 60.0,
       "priority": "Medium"
     },
     {
@@ -683,7 +683,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-19",
       "end": "2026-11-30",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
@@ -701,7 +701,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-19",
       "end": "2026-10-25",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
@@ -719,7 +719,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-19",
       "end": "2026-11-01",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
@@ -737,7 +737,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-19",
       "end": "2026-11-01",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
@@ -755,7 +755,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-19",
       "end": "2026-11-01",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
@@ -773,7 +773,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-19",
       "end": "2026-11-08",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
@@ -791,7 +791,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-10-26",
       "end": "2026-11-08",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
@@ -809,7 +809,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-11-02",
       "end": "2026-11-22",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
@@ -827,7 +827,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-11-02",
       "end": "2026-11-22",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
@@ -845,7 +845,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-11-09",
       "end": "2026-11-29",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
@@ -863,7 +863,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-11-09",
       "end": "2026-12-06",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
@@ -881,7 +881,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-11-09",
       "end": "2026-11-29",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
@@ -899,25 +899,25 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-11-16",
       "end": "2026-12-13",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
       "id": "B2",
       "name": "Device registration + public-key registry",
-      "status": "Planned",
+      "status": "Completed",
       "values": {
         "Workstream": "Backend & Cloud",
         "Task": "Device registration + public-key registry",
         "Lead": "Shahesta",
-        "Support (who helps, with what)": "Moaz",
-        "Status": "Planned",
+        "Support (who helps, with what)": "Moaz; done early with the core API",
+        "Status": "Completed",
         "Depends on": "B1,A4",
         "Notes": "Supports sender identity and signature verification."
       },
-      "start": "2026-11-16",
-      "end": "2026-12-13",
-      "progress": 0,
+      "start": "2026-10-13",
+      "end": "2026-10-14",
+      "progress": 100.0,
       "priority": "High"
     },
     {
@@ -935,7 +935,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-11-16",
       "end": "2026-12-13",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
@@ -953,7 +953,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-11-23",
       "end": "2026-12-20",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
@@ -971,7 +971,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-11-23",
       "end": "2026-12-20",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
@@ -989,7 +989,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-12-01",
       "end": "2026-12-20",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
@@ -1007,7 +1007,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-12-01",
       "end": "2027-01-17",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
@@ -1025,25 +1025,25 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-12-01",
       "end": "2027-01-10",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
       "id": "C4",
       "name": "Backend authentication/RBAC + secret management",
-      "status": "Planned",
+      "status": "In Progress",
       "values": {
         "Workstream": "Cybersecurity",
         "Task": "Backend authentication/RBAC + secret management",
         "Lead": "Malak",
-        "Support (who helps, with what)": "Ahmed",
-        "Status": "Planned",
+        "Support (who helps, with what)": "Ahmed; Moaz: sign-in and roles done 16 Oct (B8)",
+        "Status": "In Progress",
         "Depends on": "A4,B1",
         "Notes": ""
       },
-      "start": "2026-12-01",
+      "start": "2026-10-15",
       "end": "2027-01-10",
-      "progress": 0,
+      "progress": 50.0,
       "priority": "High"
     },
     {
@@ -1061,7 +1061,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-12-14",
       "end": "2027-02-07",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "Medium"
     },
     {
@@ -1079,7 +1079,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-12-14",
       "end": "2027-01-17",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
@@ -1097,7 +1097,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2026-12-14",
       "end": "2027-01-17",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
@@ -1115,7 +1115,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2027-01-04",
       "end": "2027-02-14",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "Medium"
     },
     {
@@ -1133,7 +1133,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2027-01-04",
       "end": "2027-01-31",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "High"
     },
     {
@@ -1151,7 +1151,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2027-01-11",
       "end": "2027-02-07",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "Medium"
     },
     {
@@ -1169,7 +1169,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2027-02-01",
       "end": "2027-03-15",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "Medium"
     },
     {
@@ -1187,7 +1187,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2027-02-15",
       "end": "2027-03-31",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "Medium"
     },
     {
@@ -1205,7 +1205,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2027-03-15",
       "end": "2027-04-30",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "Medium"
     },
     {
@@ -1223,7 +1223,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2027-03-15",
       "end": "2027-05-31",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "Medium"
     },
     {
@@ -1241,7 +1241,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2027-05-01",
       "end": "2027-06-15",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "Medium"
     },
     {
@@ -1259,7 +1259,7 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2027-05-01",
       "end": "2027-06-15",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "Medium"
     },
     {
@@ -1277,8 +1277,188 @@ export const WORKBOOK_TASK_UPDATE = {
       },
       "start": "2027-05-15",
       "end": "2027-06-30",
-      "progress": 0,
+      "progress": 0.0,
       "priority": "Medium"
+    },
+    {
+      "id": "E9",
+      "name": "Severity rule (FR-27): warn only about hazards that make a driver stop, slow down or swerve",
+      "status": "Completed",
+      "values": {
+        "Workstream": "Embedded & Trust Engine",
+        "Task": "Severity rule (FR-27): warn only about hazards that make a driver stop, slow down or swerve",
+        "Lead": "Shahesta",
+        "Support (who helps, with what)": "",
+        "Status": "Completed",
+        "Depends on": "E7",
+        "Notes": ""
+      },
+      "start": "2026-10-15",
+      "end": "2026-10-15",
+      "progress": 100.0,
+      "priority": ""
+    },
+    {
+      "id": "E10",
+      "name": "Device logic fix: confirm potholes seen in 2 of 5 frames (found by testing on Cairo video)",
+      "status": "Completed",
+      "values": {
+        "Workstream": "Embedded & Trust Engine",
+        "Task": "Device logic fix: confirm potholes seen in 2 of 5 frames (found by testing on Cairo video)",
+        "Lead": "Shahesta",
+        "Support (who helps, with what)": "",
+        "Status": "Completed",
+        "Depends on": "E6",
+        "Notes": ""
+      },
+      "start": "2026-10-16",
+      "end": "2026-10-16",
+      "progress": 100.0,
+      "priority": ""
+    },
+    {
+      "id": "B7",
+      "name": "Rate limits (FR-SEC-20): per device, user and address; 429 with Retry-After",
+      "status": "Completed",
+      "values": {
+        "Workstream": "Backend & Cloud",
+        "Task": "Rate limits (FR-SEC-20): per device, user and address; 429 with Retry-After",
+        "Lead": "Shahesta",
+        "Support (who helps, with what)": "",
+        "Status": "Completed",
+        "Depends on": "B1",
+        "Notes": ""
+      },
+      "start": "2026-10-16",
+      "end": "2026-10-16",
+      "progress": 100.0,
+      "priority": ""
+    },
+    {
+      "id": "B8",
+      "name": "Sign-in and roles (Supabase tokens; Driver, Ambulance, Administrator)",
+      "status": "Completed",
+      "values": {
+        "Workstream": "Backend & Cloud",
+        "Task": "Sign-in and roles (Supabase tokens; Driver, Ambulance, Administrator)",
+        "Lead": "Moaz",
+        "Support (who helps, with what)": "Shahesta (integration and tests)",
+        "Status": "Completed",
+        "Depends on": "B1",
+        "Notes": ""
+      },
+      "start": "2026-10-15",
+      "end": "2026-10-16",
+      "progress": 100.0,
+      "priority": ""
+    },
+    {
+      "id": "T9",
+      "name": "Load test + fix: hazard answers 53 s → 0.07 s at 200 cars (0.46 s at 1,600)",
+      "status": "Completed",
+      "values": {
+        "Workstream": "Integration & Verification",
+        "Task": "Load test + fix: hazard answers 53 s → 0.07 s at 200 cars (0.46 s at 1,600)",
+        "Lead": "Shahesta",
+        "Support (who helps, with what)": "",
+        "Status": "Completed",
+        "Depends on": "T7",
+        "Notes": ""
+      },
+      "start": "2026-10-16",
+      "end": "2026-10-16",
+      "progress": 100.0,
+      "priority": ""
+    },
+    {
+      "id": "T10",
+      "name": "Camera models compared in the system simulation (5 runs each)",
+      "status": "Completed",
+      "values": {
+        "Workstream": "Integration & Verification",
+        "Task": "Camera models compared in the system simulation (5 runs each)",
+        "Lead": "Shahesta",
+        "Support (who helps, with what)": "",
+        "Status": "Completed",
+        "Depends on": "E7",
+        "Notes": ""
+      },
+      "start": "2026-10-15",
+      "end": "2026-10-16",
+      "progress": 100.0,
+      "priority": ""
+    },
+    {
+      "id": "AI8",
+      "name": "Detector v4 / v5 and chip model v5 experiments; data diagnosis; labelling policy",
+      "status": "Completed",
+      "values": {
+        "Workstream": "AI & Data",
+        "Task": "Detector v4 / v5 and chip model v5 experiments; data diagnosis; labelling policy",
+        "Lead": "Shahesta",
+        "Support (who helps, with what)": "",
+        "Status": "Completed",
+        "Depends on": "AI3",
+        "Notes": ""
+      },
+      "start": "2026-10-14",
+      "end": "2026-10-16",
+      "progress": 100.0,
+      "priority": ""
+    },
+    {
+      "id": "AI9",
+      "name": "YouTube batch 6: 8 new Egyptian driving videos, frames picked and pre-labelled",
+      "status": "In Progress",
+      "values": {
+        "Workstream": "AI & Data",
+        "Task": "YouTube batch 6: 8 new Egyptian driving videos, frames picked and pre-labelled",
+        "Lead": "Shahesta",
+        "Support (who helps, with what)": "Team: correct boxes, tag the 2 test videos",
+        "Status": "In Progress",
+        "Depends on": "AI8",
+        "Notes": ""
+      },
+      "start": "2026-10-16",
+      "end": "2026-10-25",
+      "progress": 10.0,
+      "priority": ""
+    },
+    {
+      "id": "D8",
+      "name": "Mentor progress reports: backend and simulation, with evidence",
+      "status": "Completed",
+      "values": {
+        "Workstream": "Documentation",
+        "Task": "Mentor progress reports: backend and simulation, with evidence",
+        "Lead": "Shahesta",
+        "Support (who helps, with what)": "",
+        "Status": "Completed",
+        "Depends on": "",
+        "Notes": ""
+      },
+      "start": "2026-10-16",
+      "end": "2026-10-16",
+      "progress": 100.0,
+      "priority": ""
+    },
+    {
+      "id": "D9",
+      "name": "Team repository baseline (backend branch) + how-to-work guide",
+      "status": "Completed",
+      "values": {
+        "Workstream": "Documentation",
+        "Task": "Team repository baseline (backend branch) + how-to-work guide",
+        "Lead": "Shahesta",
+        "Support (who helps, with what)": "Malak (repository owner)",
+        "Status": "Completed",
+        "Depends on": "",
+        "Notes": ""
+      },
+      "start": "2026-10-16",
+      "end": "2026-10-16",
+      "progress": 100.0,
+      "priority": ""
     }
   ]
 };
